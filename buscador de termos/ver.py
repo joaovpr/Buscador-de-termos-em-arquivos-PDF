@@ -1,7 +1,7 @@
 #coding: utf-8
 import pdftotext
 
-# Load your PDF
+# Load your PDF (Aqui voce coloca o nome do arquivo .pdf onde está com 'teste22.pdf' -- lembre das aspas o arquivo PDF tem que estar localizado na pasta do programa)
 with open("teste22.pdf", "rb") as f:
     pdf = pdftotext.PDF(f)
 
@@ -11,7 +11,7 @@ with open("teste22.pdf", "rb") as f:
 
 # How many pages?
 
-print(len(pdf))
+print('O PDF TEM - ' + str(len(pdf)) + ' PÁGINAS')
 
 # Iterate over all the pages
 #for page in pdf:
@@ -26,9 +26,9 @@ print(len(pdf))
 
 
 #Funcao que busca no pdf
-#print(pdf[15].replace(',','').replace('.','').replace('-','').replace('(','').replace(')','').upper())
+##(NAO MEXER)##
 def buscar(pagina,palavra):
-    pdfOrganizado = pdf[pagina].replace(',','').replace('.','').replace('-','').replace('(','').replace(')','').upper()
+    pdfOrganizado = pdf[pagina].replace(',','').replace('.','').replace('-','').replace('(','').replace(')','').replace(':','').replace(';','').upper()
     listaP = (pdfOrganizado).split()
 
     saida = False
@@ -49,7 +49,7 @@ def buscar(pagina,palavra):
 
 
 
-##buscar(0,'banana')
+
 
 
 def buscarListaPalavras(listaDePalavras,num_paginas):
@@ -66,7 +66,7 @@ def buscarListaPalavras(listaDePalavras,num_paginas):
 
 def buscarListaTermos(listaDeTermos,num_paginas):
     for m in range(num_paginas):
-        pdfOrganizado = pdf[m].replace(',','').replace('.','').replace('-','').replace('(','').replace(')','').upper()
+        pdfOrganizado = pdf[m].replace(',','').replace('.','').replace('-','').replace('(','').replace(')','').replace(':','').replace(';','').upper()
         listaP = (pdfOrganizado).split()
         ##print(pdfOrganizado)
         for k in range(len(listaDeTermos)):
@@ -94,8 +94,15 @@ def buscarListaTermos(listaDeTermos,num_paginas):
 
 
 ###########AREA DO USUARIO#############
+
+##(Listas de Termos que se quer buscar)
+
 listaTermos = ['EFEITOS CONSIDERADOS', 'RESULTADOS AJUSTADOS','GRANDES DESAFIOS','É ESSENCIAL','RAPADURA PRETA','DE IMPACTO POSITIVO']
+
+##(Listas de Palavras que se quer buscar)
+
 listapalavras = ['IGUALDADE','GÊNERO','SEXO','MASCULINO','FEMININO','DESCRIMINAÇÃO','PRECONCEITO']
+
 print('##############################################################################')
 buscarListaTermos(listaTermos,len(pdf))
 print('\033[0;0m#############################################################################')
